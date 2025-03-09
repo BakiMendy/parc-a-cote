@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 47 95% 98%;
+    --foreground: 222 47% 11%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 222 47% 31%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 167 73% 48%;
+    --secondary-foreground: 222 47% 11%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 47 95% 58%;
+    --accent-foreground: 222 47% 11%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 47% 11%;
+
+    --radius: 1rem;
+  }
+}
+
+/* Styles personnalisés */
+.playground-card {
+  transition: transform 0.2s;
+}
+
+.playground-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-badge {
+  @apply bg-accent text-accent-foreground font-medium;
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Styles pour les boutons */
+. .btn-playful {
+  @apply bg-secondary hover:bg-secondary/90 text-white font-bold;
+  border-radius: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-playful:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles responsives */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .btn-playful {
+    width: 100%;
+  }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .playground-card:hover {
+    transform: none;
+  }
+  
+  .feature-badge {
+    animation: none;
+  }
+  
+  .btn-playful:hover {
+    transform: none;
+  }
+}
+
+/* Styles pour les états de chargement */
+.image-loading-placeholder {
+  @apply bg-gray-200 animate-pulse rounded-md;
+}
+
+/* Amélioration de la visibilité des images */
+img {
+  @apply object-cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Optimisations de performance */
+.lazy-image {
+  content-visibility: auto;
+}
+
+/* Styles pour les skeletons de chargement */
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded-md;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
